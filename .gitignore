@@ -1,0 +1,5 @@
+# On ignore tous les dossiers _pycache_ et le fichier local_settings.py
+
+**/_pycache_/
+
+local_settings.py
