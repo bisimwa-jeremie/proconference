@@ -49,7 +49,7 @@ class CandidateSerializer(serializers.ModelSerializer):
     cycle = CycleSerializer(many=True)
     faculty = FaccultySerializer(many=True)
     departement = DepartementSerializer(many=True)
-    Nationnality = NationnalitySerializer(many=True)
+    nationnality = NationnalitySerializer(many=True)
 
     class Meta:
         model = Candidate
