@@ -8,6 +8,7 @@ class University(BaseModel):
     adress = models.CharField(max_length=150)
     province = models.CharField(max_length=100)
     description = models.TextField()
+    image = models.ImageField(upload_to='image_university')
 
     # d'autre champ peuvent etre necessaire ici
 
@@ -43,12 +44,32 @@ car beaucoup plus de nationnalites seront inclus
 class Nationnality(models.Model):
     name = models.CharField(max_length=100)
 
+
 class Candidate(BaseModel):
+
+    class Gender(models.TextChoices):
+        gender = {
+            'masculin':'masculin',
+            'feminin':'femini',
+            'autres':'autres'
+        }
+        
     nationnality = models.ForeignKey(Nationnality, on_delete=models.CASCADE)
     university = models.ForeignKey(University, on_delete=models.CASCADE)
+    cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE)
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
+    departement = models.ForeignKey(Departement, on_delete=models.CASCADE)
+
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    age = models.IntegerField(default=0)
+    gender = models.CharField(choices=Gender)
+    date_birth = models.DateField()
+    
+    
 
     # plusieurs d'autres champs doivent etre inclus ici
+
 
 class Article(BaseModel):
     title = models.CharField(max_length=150)
