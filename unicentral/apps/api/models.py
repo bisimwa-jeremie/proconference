@@ -8,6 +8,7 @@ class University(BaseModel):
     province = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='image_university')
+    link = models.URLField()
 
     # d'autre champ peuvent etre necessaire ici
 
@@ -21,9 +22,8 @@ class Cycle(BaseModel):
 
 
 class Faculty(BaseModel):
-    university = models.ForeignKey(University, 
+    cycle = models.ForeignKey(Cycle, 
                 on_delete=models.CASCADE)
-    cycle = models.ForeignKey(Cycle, on_delete=models.SET_NULL, null=True)
     faculty_name = models.CharField(max_length=100)
 
     # d'autre champ peuvent etre necessaire ici
@@ -58,12 +58,11 @@ class Nationnality(models.Model):
 
 class Candidate(BaseModel):
 
-    class Gender(models.TextChoices):
-        gender = {
-            'masculin':'masculin',
-            'feminin':'femini',
-            'autres':'autres'
-        }
+    GENDER = {
+        'masculin':'masculin',
+        'feminin':'feminin',
+        'autres':'autres'
+    }
         
     nationnality = models.ForeignKey(Nationnality, on_delete=models.CASCADE)
     university = models.ForeignKey(University, on_delete=models.CASCADE)
@@ -74,7 +73,7 @@ class Candidate(BaseModel):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     age = models.IntegerField(default=0)
-    gender = models.CharField(choices=Gender)
+    gender = models.CharField(choices=GENDER, max_length=20)
     date_birth = models.DateField()
     
     # plusieurs d'autres champs doivent etre inclus ici

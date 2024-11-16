@@ -53,7 +53,7 @@ class CandidateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Candidate
-        fields = ['id','created_at','created_by','deleted_at',
+        fields = ['id','created_at','deleted_at',
                  'updated_at','university','cycle','faculty',
                  'departement','nationnality','first_name',
                  'last_name','age','gender','date_birth']
