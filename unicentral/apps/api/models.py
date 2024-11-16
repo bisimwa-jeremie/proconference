@@ -1,6 +1,5 @@
 from django.db import models
 from unicentral.apps.core.models import BaseModel
-from unicentral.apps.auth_user.models import User
 
 
 class University(BaseModel):
@@ -17,6 +16,9 @@ class Cycle(BaseModel):
     name = models.CharField(max_length=100)
     university = models.ForeignKey(University, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class Faculty(BaseModel):
     university = models.ForeignKey(University, 
@@ -26,12 +28,18 @@ class Faculty(BaseModel):
 
     # d'autre champ peuvent etre necessaire ici
 
+    def __str__(self):
+        return f"{self.faculty_name}"
+
 
 class Departement(BaseModel):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
     departement_name = models.CharField(max_length=100)
 
     # d'autre champ peuvent etre necessaire ici
+
+    def __str__(self):
+        return f"{self.departement_name}"
 
 """ 
 Le model nationnality est utiliser pour regrouper 
@@ -43,6 +51,9 @@ car beaucoup plus de nationnalites seront inclus
 
 class Nationnality(models.Model):
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class Candidate(BaseModel):
@@ -66,8 +77,6 @@ class Candidate(BaseModel):
     gender = models.CharField(choices=Gender)
     date_birth = models.DateField()
     
-    
-
     # plusieurs d'autres champs doivent etre inclus ici
 
 
@@ -93,5 +102,4 @@ class Response(BaseModel):
     response = models.TextField()
 
     # D'autres champs peuvent etres necessaire ici
-
 
