@@ -6,6 +6,7 @@ class University(BaseModel):
     name = models.CharField(max_length=150)
     adress = models.CharField(max_length=150)
     province = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='image_university')
     link = models.URLField()
