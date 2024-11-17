@@ -16,6 +16,8 @@ delete_univ = Univ_List_createview_upd_del.as_view({"delete":"delete"})
 retraev_univ = Univ_List_createview_upd_del.as_view({"get":"retrive"})
 patch_univ = Univ_List_createview_upd_del.as_view({'patch': 'partial_update'})
 
+#ces url fonctionne correctement selon le besoin de de l'utilisateur en de modification
+#en cas de modification ça ne repond pas correctement à tous les methode
 
 urlpatterns = [path("cycle_create/", create_cycle, name="cycle_creat"),
                 path("cycle_lite/", list_cycle, name="cycle_list"),
