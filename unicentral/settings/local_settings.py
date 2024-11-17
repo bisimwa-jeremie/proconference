@@ -1,9 +1,9 @@
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "unicentral_db",
-        "PASSWORD": "luckson243",
-        "USER": "luckson",
+        "NAME": "conference",
+        "PASSWORD": "11111",
+        "USER": "jeremie",
         "HOST": "localhost",
         "PORT": "5432",
     }
