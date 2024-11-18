@@ -38,7 +38,7 @@ class University_filters(ListAPIView):
     searching = ['province']
 
 class Cycle_filter(ListAPIView):
-    queryset = Cycle.objects.all()
+    queryset = Cycle.objects.select_related("university")
     serializer_class=CycleSerializer
     filter_backends= [SearchFilter]
     searching_cycle = ['university']
