@@ -1,8 +1,8 @@
 from django.contrib.auth.models import Permission
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import BasePermission
-from rest_framework import viewsets
 from rest_framework.filters import SearchFilter
+from rest_framework import viewsets
 from unicentral.apps.api.models import University, Cycle
 from unicentral.apps.api.serializers import UniversitySerializer, CycleSerializer
 
@@ -17,17 +17,28 @@ class Univ_List_createview_upd_del(viewsets.ModelViewSet):
     queryset = University.objects.all()
     serializer_class = UniversitySerializer
 
+
 class Cycle_list_creat(viewsets.ModelViewSet):
     serializer_class = CycleSerializer
     queryset = Cycle.objects.all()
 
-# for to filter the univrsity at thr pronvinces
+#class Retriev_update_delete(RetrieveUpdateDestroyAPIView):
+    # serializer_class = CycleSerializer
+
+   # def get_queryset(self):
+      #  return Cycle.objects.filter(pk=self.kwargs.get("pk"))
+
+    #def delete_cycle(self):
+        #return Cycle.objects.select_related(university=self.kwargs.get("university"))
+
 class University_filters(ListAPIView):
+    queryset= University.objects.all()
     serializer_class=UniversitySerializer
     filter_backends= [SearchFilter]
     searching = ['province']
 
-class University_filters(ListAPIView):
+class Cycle_filter(ListAPIView):
+    queryset = Cycle.objects.all()
     serializer_class=CycleSerializer
     filter_backends= [SearchFilter]
     searching_cycle = ['university']

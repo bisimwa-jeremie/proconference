@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from .views import Univ_List_createview_upd_del, Cycle_list_creat,University_filters
+from .views import Univ_List_createview_upd_del, Cycle_list_creat,University_filters,Cycle_filter
 
 create_cycle = Cycle_list_creat.as_view({"post":"create"})
 list_cycle = Cycle_list_creat.as_view({"get":"list"})
@@ -35,7 +35,7 @@ urlpatterns = [path("cycle_create/", create_cycle, name="cycle_creat"),
                 path("univ_retrieve/",retraev_univ, name="univ_retreiv"),
                 #for to filter the university
                 path("univ_prov/", University_filters.as_view(), name="filter_uni"),
-                 path("univ_prov/", University_filters.as_view(), name="filter_uni")
+                 path("cycle_uni/", Cycle_filter.as_view(), name="filter_uni")
 
 
-            ]
+]
