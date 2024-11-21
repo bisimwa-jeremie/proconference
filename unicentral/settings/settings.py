@@ -46,7 +46,18 @@ INSTALLED_APPS = [
     "unicentral.apps.auth_user",
     "unicentral.apps.core",
     "unicentral.apps.api",
+    "django_filters",
 ]
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.NamespaceVersioning",
+    "DEFAULT_FILTER_BACKENDs": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.searchFilter"
+    ]
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
